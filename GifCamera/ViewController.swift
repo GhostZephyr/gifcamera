@@ -9,7 +9,8 @@
 import Cocoa
 
 class ViewController: NSViewController, NSWindowDelegate {
-    let isRecording = false
+    var isRecording = false
+    var filePath = ""
     
     @IBOutlet weak var sizeLabel: NSTextField!
     @IBOutlet weak var previewView: PreviewView!
@@ -17,16 +18,17 @@ class ViewController: NSViewController, NSWindowDelegate {
     
     @IBAction func recordButtonPressed(_ sender: Any) {
         if(isRecording) {
-            
+            isRecording = false
         } else {
             let savePanel = NSSavePanel()
             savePanel.allowedFileTypes = ["gif"]
-            savePanel.begin { (result: Int) -> Void in
+            savePanel.beginSheetModal(for: self.view.window!, completionHandler: { (result: Int) -> Void in
                 if result == NSFileHandlingPanelOKButton {
-                    let exportedFileURL = savePanel.url
-                    print(exportedFileURL)
+                    self.isRecording = true
+                    self.filePath = (savePanel.url?.absoluteString)!
+                    print(self.filePath)
                 }
-            }
+            })
         }
     }
     

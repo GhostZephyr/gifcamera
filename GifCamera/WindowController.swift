@@ -14,7 +14,6 @@ class WindowController: NSWindowController {
         super.windowDidLoad()
     
         self.window?.isOpaque = false
-        self.window?.contentView = PreviewView()
+        self.window?.level = Int(CGWindowLevelForKey(.floatingWindow))
     }
-
 }

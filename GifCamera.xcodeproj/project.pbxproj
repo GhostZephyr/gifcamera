@@ -14,7 +14,7 @@
 		42DA1ED61E840F0C005FADFD /* GifCameraUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DA1ED51E840F0C005FADFD /* GifCameraUITests.swift */; };
 		42DA1EE41E8412F2005FADFD /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DA1EE31E8412F2005FADFD /* PreviewView.swift */; };
 		42DA1EE61E8414C1005FADFD /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DA1EE51E8414C1005FADFD /* WindowController.swift */; };
-		42DA1EE81E841529005FADFD /* PreviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42DA1EE71E841529005FADFD /* PreviewView.xib */; };
+		42DA1EEA1E841F5F005FADFD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DA1EE91E841F5F005FADFD /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,7 +48,7 @@
 		42DA1ED71E840F0C005FADFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42DA1EE31E8412F2005FADFD /* PreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
 		42DA1EE51E8414C1005FADFD /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
-		42DA1EE71E841529005FADFD /* PreviewView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreviewView.xib; sourceTree = "<group>"; };
+		42DA1EE91E841F5F005FADFD /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,8 +104,8 @@
 				42DA1EBE1E840F0B005FADFD /* Main.storyboard */,
 				42DA1EC11E840F0B005FADFD /* Info.plist */,
 				42DA1EE51E8414C1005FADFD /* WindowController.swift */,
+				42DA1EE91E841F5F005FADFD /* ViewController.swift */,
 				42DA1EE31E8412F2005FADFD /* PreviewView.swift */,
-				42DA1EE71E841529005FADFD /* PreviewView.xib */,
 			);
 			path = GifCamera;
 			sourceTree = "<group>";
@@ -237,7 +237,6 @@
 			files = (
 				42DA1EBD1E840F0B005FADFD /* Assets.xcassets in Resources */,
 				42DA1EC01E840F0B005FADFD /* Main.storyboard in Resources */,
-				42DA1EE81E841529005FADFD /* PreviewView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,6 +263,7 @@
 			files = (
 				42DA1EE61E8414C1005FADFD /* WindowController.swift in Sources */,
 				42DA1EB91E840F0B005FADFD /* AppDelegate.swift in Sources */,
+				42DA1EEA1E841F5F005FADFD /* ViewController.swift in Sources */,
 				42DA1EE41E8412F2005FADFD /* PreviewView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -408,7 +408,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = GifCamera/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = mj.GifCamera;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -422,7 +422,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = GifCamera/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = mj.GifCamera;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;

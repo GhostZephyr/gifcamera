@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -663,16 +664,96 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" customClass="WindowController" customModule="GifCamera" customModuleProvider="target" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="GifCamera" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="siema" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+                        <rect key="contentRect" x="196" y="240" width="429" height="236"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                     </window>
+                    <connections>
+                        <segue destination="uK2-xQ-x4S" kind="relationship" relationship="window.shadowedContentViewController" id="xRr-FE-62v"/>
+                    </connections>
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="250"/>
+            <point key="canvasLocation" x="76" y="214"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="JIq-EO-Zbe">
+            <objects>
+                <viewController id="uK2-xQ-x4S" customClass="ViewController" customModule="GifCamera" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="70A-Ad-8GB">
+                        <rect key="frame" x="0.0" y="0.0" width="453" height="285"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CR4-56-zaL">
+                                <rect key="frame" x="289" y="3" width="160" height="32"/>
+                                <buttonCell key="cell" type="push" title="Start Recording" bezelStyle="rounded" image="NSStatusUnavailable" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gE1-80-TyM">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" size="13" name="Helvetica-Bold"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="recordButtonPressed:" target="uK2-xQ-x4S" id="tCI-iy-hch"/>
+                                </connections>
+                            </button>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="Pb7-b2-HN0" customClass="PreviewView" customModule="GifCamera" customModuleProvider="target">
+                                <rect key="frame" x="10" y="36" width="433" height="239"/>
+                            </customView>
+                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fR7-HI-zLO">
+                                <rect key="frame" x="225" y="10" width="60" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="KXf-1X-a0F"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="30" drawsBackground="YES" id="AMQ-n3-zJf">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yqK-DN-o2g">
+                                <rect key="frame" x="190" y="13" width="32" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="FPS:" id="OAM-eC-Sdx">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D8A-NX-IXi">
+                                <rect key="frame" x="8" y="13" width="71" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="450 x 345 " id="DhQ-aC-uWH">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="CR4-56-zaL" firstAttribute="leading" secondItem="fR7-HI-zLO" secondAttribute="trailing" constant="10" id="533-Im-Z8h"/>
+                            <constraint firstItem="fR7-HI-zLO" firstAttribute="leading" secondItem="yqK-DN-o2g" secondAttribute="trailing" constant="5" id="6ZZ-Cg-DeF"/>
+                            <constraint firstItem="Pb7-b2-HN0" firstAttribute="width" secondItem="70A-Ad-8GB" secondAttribute="width" constant="-20" id="JW8-ja-DMw"/>
+                            <constraint firstItem="Pb7-b2-HN0" firstAttribute="top" secondItem="70A-Ad-8GB" secondAttribute="top" constant="10" id="M8V-Fh-pyU"/>
+                            <constraint firstItem="D8A-NX-IXi" firstAttribute="leading" secondItem="70A-Ad-8GB" secondAttribute="leading" constant="10" id="MCo-Zc-GA5"/>
+                            <constraint firstAttribute="bottom" secondItem="yqK-DN-o2g" secondAttribute="bottom" constant="13" id="ReY-Ia-rgZ"/>
+                            <constraint firstItem="D8A-NX-IXi" firstAttribute="baseline" secondItem="yqK-DN-o2g" secondAttribute="baseline" id="X9F-f8-SIs"/>
+                            <constraint firstAttribute="bottom" secondItem="fR7-HI-zLO" secondAttribute="bottom" constant="10" id="aZz-PG-AoM"/>
+                            <constraint firstAttribute="bottom" secondItem="CR4-56-zaL" secondAttribute="bottom" constant="10" id="duq-O5-BSw"/>
+                            <constraint firstItem="CR4-56-zaL" firstAttribute="top" secondItem="Pb7-b2-HN0" secondAttribute="bottom" constant="5" id="gsY-Db-tNU"/>
+                            <constraint firstItem="Pb7-b2-HN0" firstAttribute="leading" secondItem="70A-Ad-8GB" secondAttribute="leading" constant="10" id="pKR-9b-VAY"/>
+                            <constraint firstAttribute="trailing" secondItem="CR4-56-zaL" secondAttribute="trailing" constant="10" id="stu-eC-hfe"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="previewView" destination="Pb7-b2-HN0" id="0NV-6g-lhp"/>
+                        <outlet property="recordButton" destination="CR4-56-zaL" id="oAO-tu-otF"/>
+                        <outlet property="sizeLabel" destination="D8A-NX-IXi" id="eVm-T1-dMM"/>
+                    </connections>
+                </viewController>
+                <customObject id="7GD-za-ISC" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="76" y="625"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="NSStatusUnavailable" width="16" height="16"/>
+    </resources>
 </document>

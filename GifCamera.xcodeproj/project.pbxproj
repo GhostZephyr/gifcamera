@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30B0E9981E843BFE00CC3CD7 /* GifEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B0E9971E843BFE00CC3CD7 /* GifEngine.swift */; };
 		42DA1EB91E840F0B005FADFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DA1EB81E840F0B005FADFD /* AppDelegate.swift */; };
 		42DA1EBD1E840F0B005FADFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42DA1EBC1E840F0B005FADFD /* Assets.xcassets */; };
 		42DA1EC01E840F0B005FADFD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42DA1EBE1E840F0B005FADFD /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		30B0E9971E843BFE00CC3CD7 /* GifEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GifEngine.swift; sourceTree = "<group>"; };
 		42DA1EB51E840F0B005FADFD /* GifCamera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GifCamera.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42DA1EB81E840F0B005FADFD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42DA1EBC1E840F0B005FADFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				42DA1EE51E8414C1005FADFD /* WindowController.swift */,
 				42DA1EE91E841F5F005FADFD /* ViewController.swift */,
 				42DA1EE31E8412F2005FADFD /* PreviewView.swift */,
+				30B0E9971E843BFE00CC3CD7 /* GifEngine.swift */,
 			);
 			path = GifCamera;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 				42DA1EE61E8414C1005FADFD /* WindowController.swift in Sources */,
 				42DA1EB91E840F0B005FADFD /* AppDelegate.swift in Sources */,
 				42DA1EEA1E841F5F005FADFD /* ViewController.swift in Sources */,
+				30B0E9981E843BFE00CC3CD7 /* GifEngine.swift in Sources */,
 				42DA1EE41E8412F2005FADFD /* PreviewView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

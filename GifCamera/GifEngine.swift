@@ -46,7 +46,7 @@ class GifEngine: NSObject, AVCaptureFileOutputRecordingDelegate {
         
         let input: AVCaptureScreenInput = AVCaptureScreenInput(displayID: displayId)
         input.cropRect = position
-        input.scaleFactor = 0.5
+        input.scaleFactor = 1 // retina thing
         
         if ((self.session?.canAddInput(input)) != nil) {
             self.session?.addInput(input)

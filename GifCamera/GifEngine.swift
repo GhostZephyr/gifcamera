@@ -38,10 +38,15 @@ class GifEngine: NSObject, AVCaptureFileOutputRecordingDelegate {
         self.session = AVCaptureSession()
         self.session?.sessionPreset = AVCaptureSessionPresetHigh
         
+//        for(node in NSScreen.screens()) {
+//            
+//        }
+        
         let displayId: CGDirectDisplayID = CGMainDisplayID()
         
         let input: AVCaptureScreenInput = AVCaptureScreenInput(displayID: displayId)
         input.cropRect = position
+        input.scaleFactor = 0.5
         
         if ((self.session?.canAddInput(input)) != nil) {
             self.session?.addInput(input)

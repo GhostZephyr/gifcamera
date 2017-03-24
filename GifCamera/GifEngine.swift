@@ -7,39 +7,81 @@
 //
 
 import Cocoa
+import AVFoundation
+import Regift
 
-class GifEngine: NSObject {
-    var images = [CGImage]()
-    var timer = Timer()
-    var previewView = NSView()
-    var filePath = ""
-    var position = NSRect()
+class GifEngine: NSObject, AVCaptureFileOutputRecordingDelegate {
+    var destinationUrl: NSURL
+    var tempPath = NSTemporaryDirectory() + "gifcam.mp4"
+    var session: AVCaptureSession?
+    var movieFileOutput: AVCaptureMovieFileOutput?
+    var viewPosition: CGRect
+    var fps: Int
     
-    func startRecording(path: String, view: NSView, position: NSRect) {
-        self.previewView = view
-        self.filePath = path
-        self.position = position
-        
-        timer = Timer.scheduledTimer(timeInterval: 1/30, target: self, selector: #selector(getScreenshot), userInfo: nil, repeats: true)
+    public var destination: NSURL {
+        get {
+            return self.destinationUrl
+        }
     }
     
-    func getScreenshot() {
-        let screenshot = CGDisplayCreateImage(CGMainDisplayID(), rect: self.position)
-        images.append(screenshot!)
+    public var position: CGRect {
+        get {
+            return self.viewPosition
+        }
+    }
+    
+    public init(destination: NSURL, position: CGRect, fps: Int) {
+        self.destinationUrl = destination
+        self.viewPosition = position
+        self.fps = fps
+        
+        self.session = AVCaptureSession()
+        self.session?.sessionPreset = AVCaptureSessionPresetHigh
+        
+        let displayId: CGDirectDisplayID = CGMainDisplayID()
+        
+        let input: AVCaptureScreenInput = AVCaptureScreenInput(displayID: displayId)
+        input.cropRect = position
+        
+        if ((self.session?.canAddInput(input)) != nil) {
+            self.session?.addInput(input)
+        }
+        
+        self.movieFileOutput = AVCaptureMovieFileOutput()
+        
+        
+        if ((self.session?.canAddOutput(self.movieFileOutput)) != nil) {
+            self.session?.addOutput(self.movieFileOutput)
+        }
+        
+        let fileManager = FileManager.default
+        
+        do {
+            try fileManager.removeItem(atPath: (tempPath))
+        }
+        catch let error as NSError {
+            print("Ooops! Something went wrong: \(error)")
+        }
+    }
+    
+    public func start() {
+        self.session?.startRunning()
+        self.movieFileOutput?.startRecording(toOutputFileURL: NSURL.fileURL(withPath: tempPath), recordingDelegate: self)
+    }
+    
+    public func stop() {
+        self.movieFileOutput?.stopRecording()
+    }
+    
+    func capture(_ captureOutput: AVCaptureFileOutput!, didFinishRecordingToOutputFileAt outputFileURL: URL!, fromConnections connections: [Any]!, error: Error!) {
+        self.session?.stopRunning()
+        self.session = nil
+        createGif()
     }
     
     func createGif() {
-        let destinationURL = NSURL(fileURLWithPath: self.filePath)
-        let destinationGIF = CGImageDestinationCreateWithURL(destinationURL, kUTTypeGIF, images.count, nil)!
+        let regift = Regift(sourceFileURL: NSURL.fileURL(withPath: tempPath) as URL, destinationFileURL: destinationUrl as URL, startTime: 0, frameRate: self.fps, loopCount: 0)
         
-        let properties = [
-            (kCGImagePropertyGIFDictionary as String): [(kCGImagePropertyGIFUnclampedDelayTime as String): 0]
-        ]
-        
-        for img in images {
-            CGImageDestinationAddImage(destinationGIF, img, nil)
-        }
-        
-        CGImageDestinationFinalize(destinationGIF)
+        print("Gif saved to \(regift.createGif())")
     }
 }

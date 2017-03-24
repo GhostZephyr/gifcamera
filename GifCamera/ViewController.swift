@@ -9,20 +9,19 @@
 import Cocoa
 
 class ViewController: NSViewController, NSWindowDelegate {
-    var gif = GifEngine()
     var isRecording = false
     var filePath = ""
+    var engine = GifEngine(destination: NSURL.fileURL(withPath: "test.gif") as NSURL, position: CGRect(), fps: 30)
     
     @IBOutlet weak var sizeLabel: NSTextField!
     @IBOutlet weak var previewView: PreviewView!
     @IBOutlet weak var recordButton: NSButton!
+    @IBOutlet weak var fpsInput: NSTextField!
     
     @IBAction func recordButtonPressed(_ sender: Any) {
         if(isRecording) {
             isRecording = false
-            gif.createGif()
-            gif.images.removeAll()
-            gif.timer.invalidate()
+            engine.stop()
             self.recordButton.title = "Start Recording"
         } else {
             let savePanel = NSSavePanel()
@@ -36,7 +35,10 @@ class ViewController: NSViewController, NSWindowDelegate {
                     let cords = self.view.window?.convertToScreen(self.previewView.frame)
                     let yOrigin = (NSScreen.main()?.frame.height)! - (cords?.origin.y)! - self.previewView.frame.height
                     let rect = NSMakeRect((cords?.origin.x)!, yOrigin, self.previewView.frame.width, self.previewView.frame.height)
-                    self.gif.startRecording(path: self.filePath, view: self.previewView, position: rect)
+                    
+                    let fps = Int(self.fpsInput.stringValue)
+                    self.engine = GifEngine(destination: NSURL.fileURL(withPath: self.filePath) as NSURL, position: rect, fps: fps!)
+                    self.engine.start()
                 }
             })
         }

@@ -742,6 +742,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="fpsInput" destination="fR7-HI-zLO" id="nJg-7W-tXv"/>
                         <outlet property="previewView" destination="Pb7-b2-HN0" id="0NV-6g-lhp"/>
                         <outlet property="recordButton" destination="CR4-56-zaL" id="oAO-tu-otF"/>
                         <outlet property="sizeLabel" destination="D8A-NX-IXi" id="eVm-T1-dMM"/>
